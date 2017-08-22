@@ -28,7 +28,7 @@ var Login = React.createClass({
     render: function () {
         return (
             <div className="columns medium-6 large-6 small-centered" style={{marginTop: 72 + 'px'}}>
-                <h1 className="text-center" style={{marginBottom: 64 + 'px'}}>Login to use our service</h1>
+                <h1 className="text-center page-title">Login to use our service</h1>
                 <form onSubmit={this.onLogin}>
                     <input type="text" ref="username" placeholder="User name"/>
                     <input type="password" ref="password" placeholder="Password"/>
