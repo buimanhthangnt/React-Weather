@@ -1,5 +1,6 @@
 var React = require('react');
 var {Link, IndexLink} = require('react-router');
+var {Route, Router, IndexRoute, hashHistory, browserHistory} = require('react-router');
 
 var Nav = React.createClass({
 	onSearch: function (e) {
@@ -7,6 +8,12 @@ var Nav = React.createClass({
 		alert('Not yet wired up');
 	},
 	render: function () {
+		var user = localStorage.getItem('user');
+		function logout(e) {
+			e.preventDefault();
+			localStorage.clear();
+			hashHistory.push('/login');
+		}
 		return (
 			<div className="top-bar">
 				<div className="top-bar-left">
@@ -21,13 +28,16 @@ var Nav = React.createClass({
 						<li>
 							<Link to="/example" activeClassName="active" activeStyle={{fontWeight: 'bold'}}>Example</Link>
 						</li>
+						<li>
+							<Link to="" activeClassName="active" activeStyle={{fontWeight: 'bold'}} onClick={logout}>{user}</Link>
+						</li>
 					</ul>
 				</div>
 				<div className="top-bar-right">
 					<form onSubmit={this.onSearch}>
 						<ul className="menu">
 							<li>
-								<input type="search" placeholder="Search weather"/>
+								<input type="search" placeholder="Search weather by city"/>
 							</li>
 							<li>
 								<input type="submit" className="button" value="Get Weather"/>
